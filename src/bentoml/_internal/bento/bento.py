@@ -258,7 +258,7 @@ class Bento(StoreItem):
         bento_fs.makedir(BENTO_PROJECT_DIR_NAME)
         target_fs = bento_fs.opendir(BENTO_PROJECT_DIR_NAME)
 
-        for dir_path, _, files in ctx_fs.walk():
+        for dir_path, _, files in ctx_fs.walk(ignore_errors=True):
             for f in files:
                 path = fs.path.combine(dir_path, f.name).lstrip("/")
                 if specs.includes(
